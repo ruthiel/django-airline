@@ -1,7 +1,13 @@
 {% extends "flights/layout.html" %}
 
 {% block body %}
-    <h1>Flights</h1>
+    <h1>Welcome, {{ request.user.first_name }}!</h1>
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>E-mail: {{ request.user.email }}</li>
+    </ul>
+
+    <h2>Flights</h2>
     <ul>
         {% for flight in flights %}
         <li>
@@ -11,4 +17,8 @@
         </li>
         {% endfor %}
     </ul>
+
+    <footer>
+        <a href="{% url 'logout' %}">Logout</a>
+    </footer>
 {% endblock %}
